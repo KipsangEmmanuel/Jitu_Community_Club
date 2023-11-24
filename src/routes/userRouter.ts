@@ -7,11 +7,11 @@ import {
 } from "../controllers/userController";
 
 
-const jituClubRouter = Router();
+const user_router = Router();
 
-jituClubRouter.post("/register", registerUser);
-jituClubRouter.put("/update", updateUser);
-jituClubRouter.get("/member/:id", getMember);
-jituClubRouter.delete("/delete/:id", deleteUser);
+user_router.post("/register", registerUser);
+user_router.put("/update", updateUser);
+user_router.get("/member/:id", getMember);
+user_router.delete("/delete/:id", deleteUser);
 
-export default jituClubRouter;
+export default user_router;
