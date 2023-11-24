@@ -1,7 +1,8 @@
-import mssql, { Request, Response } from 'mssql';
+import mssql  from 'mssql';
 import bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
 import { deleteUser, getMember, registerUser, updateUser } from './userController';
+import { Request, Response } from 'express';
 
 describe('Jitu Community Club Controller Tests', () => {
   let res: Response<any, Record<string, any>>;
@@ -31,7 +32,7 @@ describe('Jitu Community Club Controller Tests', () => {
 
       jest.spyOn(mssql, 'connect').mockResolvedValue(mockedPool);
 
-      await updateUser(req, res);
+      await updateUser(req as Request, res);
 
       expect(mockedExecute).toHaveBeenCalledWith('updateUser', {
         id: 'someId',
@@ -117,7 +118,7 @@ describe('Jitu Community Club Controller Tests', () => {
 
       jest.spyOn(mssql, 'connect').mockResolvedValue(mockedPool);
 
-      await getMember(req, res);
+      await getMember(req as any, res);
 
       expect(mockedExecute).toHaveBeenCalledWith('getMemberById', { id: 'someId' });
 
